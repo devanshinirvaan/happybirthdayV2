@@ -443,6 +443,254 @@ const styles = {
         box-shadow: 0 0 5px rgba(0,0,0,0.5);
     }
 
+/* --- VINYL NEEDLE ARM --- */
+.vinyl-arm {
+  position: absolute;
+  width: 160px;
+  height: 6px;
+  background: linear-gradient(to right, #444, #999);
+  top: -20px;
+  right: -90px;
+  border-radius: 4px;
+  transform-origin: left center;
+  transform: rotate(-35deg);
+  animation: dropNeedle 2.5s ease forwards;
+}
+
+.vinyl-arm::after {
+  content: '';
+  position: absolute;
+  right: -14px;
+  top: -8px;
+  width: 18px;
+  height: 18px;
+  background: #222;
+  border-radius: 50%;
+  box-shadow: inset 0 0 4px rgba(255,255,255,0.4);
+}
+
+@keyframes dropNeedle {
+  from {
+    transform: rotate(-35deg);
+  }
+  to {
+    transform: rotate(-12deg);
+  }
+}
+
+/* --- WAVEFORM ILLUSION --- */
+.waveform {
+  display: flex;
+  gap: 6px;
+  margin-top: 1.5rem;
+}
+
+.wave {
+  width: 6px;
+  height: 30px;
+  background: linear-gradient(180deg, #ffb8c0, #a3386e);
+  border-radius: 6px;
+  animation: wavePulse 1.4s ease-in-out infinite;
+  opacity: 0.85;
+}
+
+.wave:nth-child(2) { animation-delay: 0.1s }
+.wave:nth-child(3) { animation-delay: 0.2s }
+.wave:nth-child(4) { animation-delay: 0.3s }
+.wave:nth-child(5) { animation-delay: 0.4s }
+
+@keyframes wavePulse {
+  0% { height: 20px }
+  50% { height: 60px }
+  100% { height: 20px }
+}
+
+
+  /* --- FEATURED VINYL RECORD --- */
+
+.vinyl-container {
+  width: 320px;
+  height: 320px;
+  position: relative;
+  margin: 2rem auto;
+  animation: vinylGlow 3s ease-in-out infinite;
+}
+
+
+.vinyl-record {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center,
+      #2a2a2a 0%,
+      #111 45%,
+      #000 70%,
+      #000 100%);
+  box-shadow:
+    inset 0 0 30px rgba(255,255,255,0.15),
+    0 25px 45px rgba(0,0,0,0.45);
+  animation: spin 4s linear infinite;
+  filter: drop-shadow(0 0 25px rgba(255,184,192,0.4));
+
+}
+
+
+.vinyl-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle, #ffd6e8, #a3386e);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow:
+    inset 0 0 12px rgba(255,255,255,0.9),
+    0 0 20px rgba(163,56,110,0.7);
+}
+
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes vinylGlow {
+  0%   { box-shadow: 0 0 20px rgba(255,184,192,0.4); }
+  50%  { box-shadow: 0 0 45px rgba(255,184,192,0.8); }
+  100% { box-shadow: 0 0 20px rgba(255,184,192,0.4); }
+}
+
+/* === TURNTABLE BASE === */
+.turntable {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  margin: auto;
+}
+
+
+/* === NEEDLE ARM === */
+.tonearm {
+  position: absolute;
+  top: 30px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+
+  transform-origin: 20px 20px; /* 🔥 BASE PIVOT */
+  animation: tonearm-drop 2s ease-out forwards;
+}
+
+.tonearm-base {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #333;
+  border-radius: 50%;
+  top: 10px;
+  left: 10px;
+  box-shadow: inset 0 0 5px rgba(255,255,255,0.4);
+}
+
+.tonearm-arm {
+  position: absolute;
+  width: 130px;
+  height: 6px;
+  background: linear-gradient(to right, #666, #999);
+  top: 18px;
+  left: 18px;
+  border-radius: 4px;
+}
+
+
+/* Arm bar */
+.tonearm::before {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 6px;
+  background: linear-gradient(to right, #999, #666);
+  top: 20px;
+  left: 20px;
+  border-radius: 4px;
+}
+
+/* Needle head */
+.tonearm::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #222;
+  border-radius: 50%;
+  top: 15px;
+  left: 145px;
+}
+
+/* Pivot */
+.tonearm-pivot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #444, #111);
+  border-radius: 50%;
+  top: 10px;
+  left: 10px;
+}
+
+.tonearm-needle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #111;
+  border-radius: 50%;
+  top: 15px;
+  left: 135px;
+}
+
+
+/* === ARM MOTION === */
+@keyframes tonearm-drop {
+  from {
+    transform: rotate(35deg);
+  }
+  to {
+    transform: rotate(5deg);
+  }
+}
+
+
+
+/* === WAVEFORM ILLUSION === */
+.waveform {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.wave {
+  width: 6px;
+  height: 24px;
+  background: linear-gradient(to top, #a3386e, #ffb8c0);
+  border-radius: 6px;
+  animation: wavePulse 1.2s ease-in-out infinite;
+}
+
+.wave:nth-child(2) { animation-delay: .1s; }
+.wave:nth-child(3) { animation-delay: .2s; }
+.wave:nth-child(4) { animation-delay: .3s; }
+.wave:nth-child(5) { animation-delay: .4s; }
+
+@keyframes wavePulse {
+  0% { height: 16px; opacity: 0.6; }
+  50% { height: 38px; opacity: 1; }
+  100% { height: 16px; opacity: 0.6; }
+}
+
+
+
 
   `,
 
@@ -981,7 +1229,7 @@ const GlobalStyle = () => (
         }
         .heart:after {
             left: var(--heart-left);
-        }
+        }        
       }` : '')}
   </style>
 );
@@ -1058,7 +1306,7 @@ const CountdownTimer = ({ targetDate, onUnlock }) => {
 
 
 const Header = ({ currentPage, setCurrentPage }) => {
-  const navItems = ['Home', 'About Her', 'Our Milestones', 'Photo Album', 'The Promise'];
+  const navItems = ['Home', 'About Her', 'Our Milestones', 'Photo Album', 'Our Songs', 'The Promise',];
   
   return (
     <header style={styles.header}>
@@ -1486,6 +1734,201 @@ const Future = () => {
   );
 };
 
+/* ---------- OurSongs Component (paste into App.js) ---------- */
+
+// const OurSongs = () => {
+//   return (
+//     <div style={{
+//       padding: '3rem 1rem',
+//       textAlign: 'center',
+//       background: 'linear-gradient(135deg, #ffd6e8, #f8cdda)',
+//       borderRadius: '24px',
+//       boxShadow: '0 20px 40px rgba(163,56,110,0.25)',
+//       position: 'relative',
+//       overflow: 'hidden'
+//     }}>
+//       <h2 style={{
+//         fontFamily: 'var(--font-script)',
+//         fontSize: '3rem',
+//         color: 'var(--color-primary)',
+//         marginBottom: '2rem'
+//       }}>
+//         Our Songs 💗
+//       </h2>
+
+//       <p style={{
+//         maxWidth: '600px',
+//         margin: '0 auto 3rem',
+//         fontSize: '1.1rem',
+//         color: '#5a2a40'
+//       }}>
+//         These songs carry our memories, our feelings, our moments.
+//         Some you gave me. Some I gave you. All of them are us.
+//       </p>
+
+//       {/* FEATURED SONG */}
+//       <FeaturedVinyl />
+
+//       {/* PLAYLISTS */}
+//       <div style={{ marginTop: '4rem', display: 'grid', gap: '2.5rem' }}>
+//         <PlaylistCard
+//           title="The First Birthday Playlist 💝"
+//           subtitle="The first playlist I ever made for you"
+//           embedSrc="https://open.spotify.com/embed/playlist/23Br6E5gZ60GJH5lrFgkvu"
+//         />
+
+//         <PlaylistCard
+//           title="The Playlist You Made for Me 💞"
+//           subtitle="A gift straight from your heart"
+//           embedSrc="https://open.spotify.com/embed/playlist/6d6tltNIYxqq1bHeUXrDDr"
+//         />
+
+//         <PlaylistCard
+//           title="Our Theme Song 🌹"
+//           subtitle="The song that feels like us"
+//           embedSrc="https://open.spotify.com/embed/track/6FjbAnaPRPwiP3sciEYctO"
+//           height={152}
+//         />
+//       </div>
+//     </div>
+//   );
+// };
+
+const OurSongs = () => {
+  return (
+    <div style={{
+      padding: '3rem 1rem',
+      textAlign: 'center',
+      background: 'linear-gradient(135deg, #ffd6e8, #f8cdda)',
+      borderRadius: '24px',
+      boxShadow: '0 20px 40px rgba(163,56,110,0.25)',
+    }}>
+      <h2 style={{
+        fontFamily: 'var(--font-script)',
+        fontSize: '3rem',
+        color: 'var(--color-primary)',
+        marginBottom: '2rem'
+      }}>
+        Our Songs 💗
+      </h2>
+
+      <p style={{
+        maxWidth: '600px',
+        margin: '0 auto 3rem',
+        fontSize: '1.1rem',
+        color: '#5a2a40'
+      }}>
+        These songs carry our memories, our feelings, our moments.
+        Some you gave me. Some I gave you. All of them are us.
+      </p>
+
+      <PlaylistCard
+        title="Just The Way You Are — Bruno Mars 💞"
+        subtitle="The very first song I ever dedicated to you, two years ago, and I still can’t believe how far we’ve come.
+        Whenever you doubt yourself or feel unworthy, I want you to come back to this song.
+        The reason I chose it back then, and the reason it still matters now, is simple:
+        there was never anything wrong with you.
+        You were, you are, and you will always be perfect — just the way you are."
+        embedSrc="https://open.spotify.com/embed/track/7BqBn9nzAq8spo5e7cZ0dJ"
+        height={152}
+      />
+
+      <div style={{ marginTop: '3rem', display: 'grid', gap: '2.5rem' }}>
+        <PlaylistCard
+          title="The First Birthday Playlist 💝"
+          subtitle="The first playlist I ever made for you; a hopeless boy trying to be romantic for the very first time.
+          Somehow, it worked.
+          Your reaction when you saw this playlist is a moment I’ll never forget, a memory I’ve permanently captured in my heart.
+          That was the day I realized how deeply music could carry feelings I didn’t yet know how to say."
+          embedSrc="https://open.spotify.com/embed/playlist/23Br6E5gZ60GJH5lrFgkvu"
+        />
+
+        <PlaylistCard
+          title="The Playlist You Made for Me 💞"
+          subtitle="A gift straight from your heart.
+          Just like always, you surprised me and made me feel incredibly loved.
+          It’s gestures like this — quiet, thoughtful, and genuine — that I treasure the most.
+          This playlist isn’t just music to me, it’s proof of how deeply you care."
+          embedSrc="https://open.spotify.com/embed/playlist/6d6tltNIYxqq1bHeUXrDDr"
+        />
+
+        <PlaylistCard
+          title="Our Theme Song 🌹"
+          subtitle="I know we never officially called this our theme song but in my heart, I always knew it was.
+          I noticed the way you talked about it, the way it stayed with you, the meaning it held for you, the connection and rush of love we felt while listening to it.
+          I could tell you wanted this song to represent us.
+          So I took the liberty of making it official, because some things don’t need words to be understood."
+          embedSrc="https://open.spotify.com/embed/track/6FjbAnaPRPwiP3sciEYctO"
+          height={152}
+        />
+      </div>
+    </div>
+  );
+};
+
+
+const FeaturedVinyl = () => {
+  return (
+    <div style={{ textAlign: 'center' }}>
+    
+
+      <p style={{
+        marginTop: '1.5rem',
+        fontFamily: 'var(--font-script)',
+        fontSize: '1.6rem',
+        color: 'var(--color-primary)'
+      }}>
+        Just The Way You Are — Bruno Mars
+      </p>
+
+      <div style={{ marginTop: '1rem', maxWidth: '420px', marginInline: 'auto' }}>
+        <iframe
+          style={{ borderRadius: '12px' }}
+          src="https://open.spotify.com/embed/track/7BqBn9nzAq8spo5e7cZ0dJ"
+          width="100%"
+          height="152"
+          frameBorder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        />
+      </div>
+    </div>
+  );
+};
+
+
+const PlaylistCard = ({ title, subtitle, embedSrc, height = 352 }) => (
+  <div style={{
+    background: 'rgba(255,255,255,0.85)',
+    padding: '1.5rem',
+    borderRadius: '16px',
+    boxShadow: '0 10px 25px rgba(163,56,110,0.2)'
+  }}>
+    <h3 style={{
+      fontFamily: 'var(--font-script)',
+      fontSize: '2rem',
+      color: 'var(--color-primary)',
+      marginBottom: '0.5rem'
+    }}>
+      {title}
+    </h3>
+
+    <p style={{ marginBottom: '1rem', color: '#555' }}>
+      {subtitle}
+    </p>
+
+    <iframe
+      style={{ borderRadius: '12px' }}
+      src={embedSrc}
+      width="100%"
+      height={height}
+      frameBorder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"
+    />
+  </div>
+);
+
+
 
 // const Future = () => {
 //     const [futurePrompt, setFuturePrompt] = useState('');
@@ -1682,6 +2125,8 @@ const App = () => {
         return <PhotoAlbum openModal={openModal} />;
       case 'The Promise':
         return <Future />;
+      case 'Our Songs':
+        return <OurSongs />;
       default:
         return <Home setCurrentPage={setCurrentPage} />;
     }
